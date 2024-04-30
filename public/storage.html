@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Storage</title>
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-storage.js"></script>
+
+    <script src="js/config.js"></script>
+</head>
+
+<body>
+    <h1>Firebase Cloud Storage</h1>
+    <div>
+        <h2>Upload</h2>
+        <h3>Choise Upload File:
+            <br>
+            <input id="selectedFile" type="file" onchange="selectedFile = this.files[0]">
+        </h3>
+        <h3>Upload Path Reference:
+            <br>
+            <input id="fileRefUL" placeholder="Reference">
+        </h3>
+        <button id="btnUL">Upload</button>
+    </div>
+    <div>
+        <h2>Download</h2>
+        <h3>Download Path Reference
+            <br>
+            <input id="fileRefDL" placeholder="Reference">
+        </h3>
+        <button id="btnDL">Download</button>
+    </div>
+
+    <script src="js/storage.js"></script>
+</body>
+
+</html>

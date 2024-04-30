@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Realtime Database</title>
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script>
+
+    <script src="js/config.js"></script>
+</head>
+
+<body>
+    <h1>Firebase Realtime Database</h1>
+    <div>
+        <h2>Write Data</h2>
+        <input id="txtWriteRef" placeholder="Reference">
+        <input id="txtWriteData" placeholder="Data">
+        <button id="btnWrite">Write</button>
+    </div>
+    <div>
+        <h2>Read Data</h2>
+        <input id="txtReadRef" placeholder="Reference">
+        <p id='readResult'></p>
+        <button id="btnRead">Read</button>
+    </div>
+
+    <script src="js/database.js"></script>
+</body>
+
+</html>
