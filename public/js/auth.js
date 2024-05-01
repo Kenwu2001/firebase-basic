@@ -1,3 +1,6 @@
+// import { GoogleAuthProvider } from "firebase/auth";
+// import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 // Login with Email/Password
 var txtEmail = document.getElementById('txtEmail');
 var txtPassword = document.getElementById('txtPassword');
@@ -8,7 +11,9 @@ var btnLogout = document.getElementById('btnLogout');
 btnLogin.addEventListener('click', e => {
     var email = txtEmail.value;
     var password = txtPassword.value;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(e => console.log(e.message));
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(curUser => alert("great"))
+        .catch(e => alert("Account not found"));  // console.log("hhhhhhhhhh" + e.message)
 });
 
 btnSignUp.addEventListener('click', e => {
@@ -25,6 +30,17 @@ btnLogout.addEventListener('click', e => {
 var btnLoginGooglePop = document.getElementById('btnLoginGooglePop');
 var btnLoginGoogleRedi = document.getElementById('btnLoginGoogleRedi');
 
+// const provider = new GoogleAuthProvider();
+
+// const auth = getAuth();
+// signInWithPopup(auth, provider)
+//   .then((result) => {
+//     var token = result.credential.accessToken;
+//     var user = result.user;
+//   }).catch((error) => {
+//     console.log('error: ' + error.message);
+//   });
+
 var provider = new firebase.auth.GoogleAuthProvider();
 
 btnLoginGooglePop.addEventListener('click', e => {
@@ -40,14 +56,6 @@ btnLoginGooglePop.addEventListener('click', e => {
 btnLoginGoogleRedi.addEventListener('click', e => {
     console.log('signInWithPopup');
     firebase.auth().signInWithRedirect(provider);
-});
-
-firebase.auth().getRedirectResult().then(function (result) {
-    if (result.credential)
-        var token = result.credential.accessToken;
-    var user = result.user;
-}).catch(function (error) {
-    console.log('error: ' + error.message);
 });
 
 // Login with Facebook
@@ -71,6 +79,15 @@ btnLoginFBPop.addEventListener('click', e => {
 
 btnLoginFBRedi.addEventListener('click', e => {
     firebase.auth().signInWithRedirect(facebook_provider);
+});
+
+// google and facebook登入完成跳回原本的頁面
+firebase.auth().getRedirectResult().then(function (result) {
+    if (result.credential)
+        var token = result.credential.accessToken;
+    var user = result.user;
+}).catch(function (error) {
+    console.log('error: ' + error.message);
 });
 
 // Manage Users
